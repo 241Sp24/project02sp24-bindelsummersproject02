@@ -35,17 +35,19 @@ public class GraduateStudent extends StudentFees {
         return isGraduateAssistant;
     }
 
+    @Override
     public double getPayableAmount() {
         if (this.graduateAssistantType.equals("full")) {
-            return (((super.PayableAmount() * getCoursesEnrolled()) * 0) + this.ADDITIONAL_FEES);
+            return (((this.coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) * 0) + this.ADDITIONAL_FEES;
         } else if (this.graduateAssistantType.equals("half")) {
-            return (((super.PayableAmount() * getCoursesEnrolled()) / 2) + this.ADDITIONAL_FEES);
+            return (((this.coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) / 2) + this.ADDITIONAL_FEES;
         } else {
-            return ((super.PayableAmount() * getCoursesEnrolled()) + this.ADDITIONAL_FEES);
+            return ((this.coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) + this.ADDITIONAL_FEES;
         }
 
     }
 
+    @Override
     public String toString() {
         return super.toString() + "\nGraduate assistant: " + this.isGraduateAssistant + "\nGradaute assistant type: " + this.graduateAssistantType + "\nCourses enrolled: " + this.coursesEnrolled + "\n Payable amount: " + getPayableAmount();
     }

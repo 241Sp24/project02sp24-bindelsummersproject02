@@ -71,9 +71,7 @@ public abstract class StudentFees {
         return PER_CREDIT_FEE;
     }
 
-    public double PayableAmount() {
-        return CREDITS_PER_COURSE * PER_CREDIT_FEE;
-    }
+    public abstract double getPayableAmount();
 
     public String toString() {
         return "Student name: " + this.studentName + "\nStudent id: " + this.studentID + "\nEnrolled: " + this.isEnrolled;

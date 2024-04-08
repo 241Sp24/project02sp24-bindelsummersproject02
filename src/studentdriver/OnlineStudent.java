@@ -10,10 +10,12 @@ public class OnlineStudent extends StudentFees {
         this.noOfMonths = noOfMonths;
     }
 
+    @Override
     public double getPayableAmount() {
         return this.noOfMonths * MONTHLY_FEE;
     }
 
+    @Override
     public String toString() {
         return super.toString() + "\n No of months: " + this.noOfMonths + "\nPayable amount: " + getPayableAmount();
     }

@@ -35,8 +35,9 @@ public class UGStudent extends StudentFees {
         return scholarshipAmount;
     }
 
+    @Override
     public double getPayableAmount() {
-        return ((super.PayableAmount() * getCoursesEnrolled()) + this.ADDITIONAL_FEE) - getScholarshipAmount();
+        return ((coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) + ADDITIONAL_FEE;
     }
 
     @Override
