@@ -49,6 +49,6 @@ public class GraduateStudent extends StudentFees {
 
     @Override
     public String toString() {
-        return super.toString() + "\nGraduate assistant: " + this.isGraduateAssistant + "\nGradaute assistant type: " + this.graduateAssistantType + "\nCourses enrolled: " + this.coursesEnrolled + "\n Payable amount: " + getPayableAmount();
+        return super.toString() + "\nGraduate assistant: " + this.isGraduateAssistant + "\nGradaute assistant type: " + this.graduateAssistantType + "\nCourses enrolled: " + this.coursesEnrolled + "\nPayable amount: " + getPayableAmount();
     }
 }

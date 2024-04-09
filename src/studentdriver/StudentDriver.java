@@ -29,21 +29,21 @@ public class StudentDriver {
                     String[] parts = line.split(",");
                     int id = Integer.parseInt(parts[0].trim());
                     String name = parts[1].trim();
-                    boolean hasscholarship = Boolean.parseBoolean(parts[2].trim());
+                    boolean Enrolled = Boolean.parseBoolean(parts[2].trim());
                     int courses = Integer.parseInt(parts[3].trim());
-                    boolean Enrolled = Boolean.parseBoolean(parts[4].trim());
+                    boolean hasscholarship = Boolean.parseBoolean(parts[4].trim());
                     int totalScholarship = Integer.parseInt(parts[5].trim());
 
                     students[index] = new UGStudent(name, id, Enrolled, hasscholarship, totalScholarship, courses);
                     System.out.println(students[index].toString());
                     System.out.println();
-                    
+
                     ugTotalFee += students[index].getPayableAmount();
                     ugTotalCourses += courses;
-                    
+
                     index++;
                 }
-                
+
                 System.out.println("\n**********Graduate students list**********");
                 double gradTotalFee = 0;
                 int gradAssistantCount = 0;
@@ -56,20 +56,20 @@ public class StudentDriver {
                     boolean Enrolled = Boolean.parseBoolean(parts[2].trim());
                     int courses = Integer.parseInt(parts[3].trim());
                     boolean gradassitant = Boolean.parseBoolean(parts[4].trim());
-                    String assitantType = parts[4].trim();
+                    String assitantType = parts[5].trim();
 
                     students[index] = new GraduateStudent(name, id, Enrolled, gradassitant, assitantType, courses);
                     System.out.println(students[index].toString());
                     System.out.println();
-                    
+
                     gradTotalFee += students[index].getPayableAmount();
                     gradAssistantCount++; // Increment count for each graduate student
 
                     gradTotalCourses += courses;
-                    
+
                     index++;
                 }
-                
+
                 System.out.println("\n**********Online student list**********");
                 double onlineTotalFee = 0;
                 int onlineTotalMonths = 0;
@@ -84,13 +84,13 @@ public class StudentDriver {
                     students[index] = new OnlineStudent(name, id, Enrolled, noMonths);
                     System.out.println(students[index].toString());
                     System.out.println();
-                    
+
                     onlineTotalFee += students[index].getPayableAmount();
                     onlineTotalMonths += noMonths;
-                    
+
                     index++;
                 }
-                
+
                 // Print summary details
                 System.out.println("\n**********Undergraduate Students details**********");
                 System.out.println("Average Students fee: " + (ugTotalFee / ugStudents));
@@ -104,19 +104,15 @@ public class StudentDriver {
 
                 System.out.println("\n**********Online Students details**********");
                 System.out.println("Average Students fee: " + (onlineTotalFee / onlineStudent));
-                System.out.println("Total number of months: " + onlineTotalMonths);
-                
+                //just have to put it in a printf statement then it will look correct
+
             } catch (IOException e) {
                 System.out.println("Error reading file: " + e.getMessage());
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
             }
-            
-            catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            }
-            
+
         }
 
     }
 }
-
-
