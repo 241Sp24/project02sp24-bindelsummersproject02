@@ -9,11 +9,11 @@ public class StudentDriver {
         System.out.println("Project02");
         try (Scanner input = new Scanner(System.in)) {
             // aks user for input
-            System.out.println("Enter the no of UG Students: ");
+            System.out.print("Enter the no of UG Students: ");
             int ugStudents = input.nextInt();
-            System.out.println("Enter the no of Graduate students: ");
+            System.out.print("Enter the no of Graduate students: ");
             int gradStudents = input.nextInt();
-            System.out.println("Enter the no of online students: ");
+            System.out.print("Enter the no of online students: ");
             int onlineStudent = input.nextInt();
 
             StudentFees[] students = new StudentFees[12];
@@ -21,6 +21,7 @@ public class StudentDriver {
                 String line;
                 int index = 0;
 
+                System.out.println("\n**********Undergraduate students list**********");
                 for (int i = 0; i < ugStudents; i++) {
                     line = br.readLine();
                     String[] parts = line.split(",");
@@ -32,8 +33,11 @@ public class StudentDriver {
                     int totalScholarship = Integer.parseInt(parts[5].trim());
 
                     students[index] = new UGStudent(name, id, Enrolled, hasscholarship, totalScholarship, courses);
+                    System.out.println(students[index].toString());
                     index++;
                 }
+                
+                System.out.println("\n**********Graduate students list**********");
                 for (int i = 0; i < gradStudents; i++) {
                     line = br.readLine();
                     String[] parts = line.split(",");
@@ -45,8 +49,11 @@ public class StudentDriver {
                     String assitantType = parts[5].trim();
 
                     students[index] = new GraduateStudent(name, id, Enrolled, gradassitant, assitantType, courses);
+                    System.out.println(students[index].toString());
                     index++;
                 }
+                
+                System.out.println("\n**********Online student list**********");
                 for (int i = 0; i < onlineStudent; i++) {
                     line = br.readLine();
                     String[] parts = line.split(",");
@@ -56,11 +63,13 @@ public class StudentDriver {
                     int noMonths = Integer.parseInt(parts[3].trim());
 
                     students[index] = new OnlineStudent(name, id, Enrolled, noMonths);
+                    System.out.println(students[index].toString());
                     index++;
                 }
             } catch (IOException e) {
                 System.out.println("Error reading file: " + e.getMessage());
             }
+            
 
         }
     }
