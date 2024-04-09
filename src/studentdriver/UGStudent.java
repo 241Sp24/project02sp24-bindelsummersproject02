@@ -37,6 +37,7 @@ public class UGStudent extends StudentFees {
 
     @Override
     public double getPayableAmount() {
+        //to make sure that the UG students are enrolled
         if (isIsEnrolled() == true) {
             return ((coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) + ADDITIONAL_FEE - this.scholarshipAmount;
         } else {
@@ -46,6 +47,6 @@ public class UGStudent extends StudentFees {
 
     @Override
     public String toString() {
-        return super.toString() + "\nScholarship: " + this.hasScholarship + "\nScholarship amount: " + this.getScholarshipAmount() + "\nCourses enrolled: " + this.coursesEnrolled + "\nPayable amount: " + getPayableAmount();
+        return String.format("Student name: %1s \nStudent id: %1d \nEnrolled: %1b \nScholarship: %1b \nScholarship amount: %1.2f \nCourses enrolled: %1d \nPayable amount: %1.2f", getStudentName(), getStudentID(), isIsEnrolled(), this.hasScholarship, getScholarshipAmount(), this.coursesEnrolled, getPayableAmount());
     }
 }

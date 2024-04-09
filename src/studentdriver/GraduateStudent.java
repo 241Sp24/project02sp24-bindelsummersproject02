@@ -37,18 +37,23 @@ public class GraduateStudent extends StudentFees {
 
     @Override
     public double getPayableAmount() {
-        if (this.graduateAssistantType.equals("full")) {
-            return (((this.coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) * 0) + this.ADDITIONAL_FEES;
-        } else if (this.graduateAssistantType.equals("half")) {
-            return (((this.coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) / 2) + this.ADDITIONAL_FEES;
+        // to differentiate the Type of assistant
+        if ("full".equals(this.graduateAssistantType)) {
+            return this.ADDITIONAL_FEES;
+        } else if ("half".equals(this.graduateAssistantType)) {
+            return (this.coursesEnrolled * super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE() / 2) + this.ADDITIONAL_FEES;
+        } else if (this.graduateAssistantType == null || this.graduateAssistantType.isEmpty()) {
+            // Handle null or empty string case
+            return (this.coursesEnrolled * super.getCREDITS_PER_COURSE() * super.getPER_CREDIT_FEE()) + this.ADDITIONAL_FEES;
         } else {
-            return ((this.coursesEnrolled * super.getCREDITS_PER_COURSE()) * super.getPER_CREDIT_FEE()) + this.ADDITIONAL_FEES;
+            // Handle unexpected values
+            return 0.0; // needed a else statement in order to return three above
         }
 
     }
 
     @Override
     public String toString() {
-        return super.toString() + "\nGraduate assistant: " + this.isGraduateAssistant + "\nGradaute assistant type: " + this.graduateAssistantType + "\nCourses enrolled: " + this.coursesEnrolled + "\nPayable amount: " + getPayableAmount();
+        return String.format("Student name: %1s \nStudent id: %1d \nEnrolled: %1b \nGraduate assistant: %1b\nGradaute assistant type: %1s \nCourses enrolled: %1d \nPayable amount: %1.2f", getStudentName(), getStudentID(), isIsEnrolled(), this.isGraduateAssistant, this.graduateAssistantType, this.coursesEnrolled, getPayableAmount());
     }
 }

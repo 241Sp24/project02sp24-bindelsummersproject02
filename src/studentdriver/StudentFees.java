@@ -74,7 +74,7 @@ public abstract class StudentFees {
     public abstract double getPayableAmount();
 
     public String toString() {
-        return "Student name: " + this.studentName + "\nStudent id: " + this.studentID + "\nEnrolled: " + this.isEnrolled;
+        return String.format("Student name: %1s \nStudent id: %1d \nEnrolled: %1b", this.studentName, this.studentID, this.isEnrolled);
     }
 
 }
